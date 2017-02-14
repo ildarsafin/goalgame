@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  template: template0
+  encoding: unicode
+  username: ildarsafin
+  host: localhost
+  password:
+  pool: 5
+
+development:
+  <<: *default
+  database: goalgame_development
+
+test:
+  <<: *default
+  database: goalgame_test
