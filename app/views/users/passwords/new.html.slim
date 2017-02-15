@@ -1,0 +1,20 @@
+.main-container
+  section class="height-100 imagebg login-image text-center" data-overlay="4"
+    .container.pos-vertical-center
+      .row
+        .col-sm-7.col-md-5
+          h2 Восстановить пароль
+          p class="lead"
+            | После ввода имейла, вы получите на почту ссылку с формой, где можно придумать новый пароль
+            br
+            | Хорошего дня! :)
+
+          = simple_form_for(resource, as: resource_name, url: password_path(resource_name), method: :post) do |f|
+            .row
+              .col-sm-12
+                = f.input :email, label: false, autofocus: true, placeholder: 'Ваша эл.почта'
+              .col-sm-12
+                = f.button :submit, "Восстановить" , class: "btn btn--primary type--uppercase white-text"
+              span class="type--fine-print block"
+                | Я вспомнил пароль!&nbsp;
+                = link_to "Вернуться и войти", new_user_session_url

@@ -1,0 +1,35 @@
+.main-container
+  section class="height-100"
+    .container.pos-vertical-center
+      .row
+        .col-sm-6.col-md-5.pull-left
+          h1 Регистрация в Игре Целей
+          p class="lead"
+            | Начните достигать своих целей прямо сейчас с помощью мощного инструмента.
+          hr class="short"
+          = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+            .row
+              = f.simple_fields_for :profile do |profile|
+                .col-xs-12
+                  = profile.input :full_name, label: false, required: true, autofocus: true, placeholder: 'Ваше имя'
+              .col-xs-12
+                = f.input :email, label: false, required: true, placeholder: 'Ваша эл.почта'
+              .col-xs-12
+                = f.input :password, label: false, required: true, placeholder: 'Ваш Пароль'
+              .col-xs-12
+                = f.input :password_confirmation, label: false, required: true, placeholder: 'Повторите Ваш Пароль'
+
+              .col-xs-12
+                = f.button :submit, "Зарегистрироваться" , class: 'btn btn--primary'
+
+              .col-xs-12
+                span class="type--fine-print"
+                  | Регистрируясь, вы подтверждаете условия&nbsp;
+                  a href="#" Публичной Оферты
+              .col-xs-12
+                span class="type--fine-print"
+                  | У меня уже есть аккаунт&nbsp;
+                  = link_to "Войти", new_user_session_url
+
+        .col-sm-6.col-md-5.pull-right
+          = image_tag "photography-9.jpg", class: "border--round box-shadow-wide"

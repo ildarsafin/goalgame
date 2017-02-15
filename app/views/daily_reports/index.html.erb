@@ -1,0 +1,38 @@
+<div class="main-container">
+    <section class="space--sm">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="">
+                        <div class="row">
+                                <% @daily_reports.each do |daily_report| %>
+                                    <article>
+                                        <div class="article__title text-center">
+                                            <a href="#">
+                                                <h2>Отчет за <%= daily_report.created_at %></h2>
+                                            </a>
+                                        </div>
+                                        <div class="article__body">
+                                            <p>
+                                                <%= daily_report.content.html_safe %>
+                                            </p>
+                                            <a href="#">Прочитать полностью</a>
+                                        </div>
+                                    </article>
+                                <% end %>
+                        </div>
+                        <!--end of row-->
+                        <div class="pagination">
+                            <div class="col-xs-6">
+                                <a class="type--fine-print" href="#">&laquo; Предыдущие</a>
+                            </div>
+                            <div class="col-xs-6 text-right">
+                                <a class="type--fine-print" href="#">Новее &raquo;</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

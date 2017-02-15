@@ -7,15 +7,19 @@ html
     meta charset="UTF-8"
     meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0"
     link href="https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700&subset=cyrillic,cyrillic-ext" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css?family=Open+Sans:200,300,400,400i,500,600,700%7CMerriweather:300,300i%7CMaterial+Icons" rel="stylesheet"
     = stylesheet_link_tag 'application', media: 'all'
 
   body
     - flash.each do |key, value|
-      .alert
-        div class="#{notification_type(key)}"
-          = value
+      / .alert
+      /   div class="#{notification_type(key)}"
+      /     = value
 
     main
+      = render "header"
       = yield
+      = render "user_personas"
+      = render "footer"
 
     = javascript_include_tag 'application'

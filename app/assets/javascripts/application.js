@@ -12,5 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
+
+$(function() {
+  var elements = document.querySelectorAll('.medium-editable'),
+  editor = new MediumEditor(elements);
+
+  jQuery.datetimepicker.setLocale("ru");
+  $("#datetimepicker").datetimepicker({
+    format: "Y-m-d H:i"
+  });
+});

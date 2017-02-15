@@ -1,0 +1,25 @@
+.main-container
+  section class="height-100 imagebg login-image text-center" data-overlay="4"
+    .container.pos-vertical-center
+      .row
+        .col-sm-7.col-md-5
+          h2 Войти в сервис Игра в Цели
+          p class="lead"
+            | Добро Пожаловать обратно! Пожалуйста, войдите под своим логином и паролем.
+            br
+            | Хорошего дня! :)
+
+          = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+            .row
+              .col-sm-12
+                = f.input :email, label: false, required: false, autofocus: true, placeholder: "Ваша эл.почта"
+              .col-sm-12
+                = f.input :password, label: false, required: false, placeholder: "Ваш Пароль"
+              .col-sm-12
+                = f.button :submit, "Войти" , class: "btn btn--primary type--uppercase white-text"
+              span class="type--fine-print block"
+                | Нет аккаунта?&nbsp;
+                = link_to "Зарегистрироваться", new_user_registration_url
+              span class="type--fine-print block"
+                | Забыли пароль?&nbsp;
+                = link_to "Восстановить аккаунт", new_user_password_url

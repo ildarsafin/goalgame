@@ -1,0 +1,23 @@
+.main-container
+  section class="height-100 imagebg login-image text-center" data-overlay="4"
+    .container.pos-vertical-center
+      .row
+        .col-sm-7.col-md-5
+          h2 Придумайте новый пароль
+          p class="lead"
+            | Осталось придумать новый пароль и Вы в системе!
+            br
+            | Хорошего дня! :)
+
+          = simple_form_for(resource, as: resource_name, url: password_path(resource_name), method: :put) do |f|
+            = f.hidden_field :reset_password_token
+            .row
+              .col-sm-12
+                = f.input :password, label: false, required: false, autofocus: true, placeholder: 'Ваш Новый пароль'
+              .col-sm-12
+                = f.input :password_confirmation, label: false, required: false, placeholder: 'Новый Пароль еще раз'
+              .col-sm-12
+                = f.button :submit, "Восстановить" , class: "btn btn--primary type--uppercase white-text"
+              span class="type--fine-print block"
+                | Я вспомнил пароль!&nbsp;
+                = link_to "Вернуться и войти", new_user_session_url

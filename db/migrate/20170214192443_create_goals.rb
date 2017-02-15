@@ -5,7 +5,7 @@ class CreateGoals < ActiveRecord::Migration[5.0]
 
       t.datetime  :start_at, null: false
       t.datetime  :planned_end_at, null: false
-      t.datetime  :actually_end_at, null: false
+      t.datetime  :actually_end_at
 
       t.integer :status, default: 0
       t.integer :activity_area, default: 0

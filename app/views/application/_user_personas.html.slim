@@ -1,0 +1,43 @@
+.user-personas
+  section class="space--sm"
+    .container
+      .row
+        .col-md-4
+          .row
+            .col-md-6
+              .person-wrapper
+                = render "shared/person"
+            .col-md-6
+              p
+                | Персонаж:&nbsp;
+                = current_user.profile.full_name
+              p Уровень: новичок
+              .footer-achievements
+                p Ваши последние награды:
+                .footer-achivement-item
+                  = image_tag "icon_1.jpg"
+                .footer-achivement-item
+                  = image_tag "icon_2.jpg"
+                .footer-achivement-item
+                  = image_tag "icon_3.jpg"
+
+
+        .col-md-4
+          .text-center
+            = image_tag "gold.png", width: 50, height: 50
+            p
+              = current_user.account.coins
+              | &nbsp;монет
+        .col-md-4
+          .row
+            .col-md-6
+              .text-right
+                p
+                  | Ваш противник: Лень
+                p Уровень: Лень обыкновенная
+                p
+                  | 100&nbsp;очков
+            .col-md-6
+              .monster-wrapper
+                = render "shared/monster"
+

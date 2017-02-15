@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   }
 
   resources :goals
-  resources :daily_achievements
+  resources :daily_reports
 
   resources :dashboards, path: :dashboard, only: [:index]
 

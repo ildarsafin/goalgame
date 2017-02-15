@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20170214215231) do
     t.text     "description",                 null: false
     t.datetime "start_at",                    null: false
     t.datetime "planned_end_at",              null: false
-    t.datetime "actually_end_at",             null: false
+    t.datetime "actually_end_at"
     t.integer  "status",          default: 0
     t.integer  "activity_area",   default: 0
     t.integer  "user_id",                     null: false

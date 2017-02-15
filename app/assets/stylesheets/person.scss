@@ -1,0 +1,184 @@
+$skin: #F0BEAF;
+$grey: #424B54;
+$pink: #F6828C;
+@mixin border($b) {
+  border-radius: $b;
+  -webkit-border-radius: $b;
+  -moz-border-radius: $b;
+}
+
+.person-wrapper {
+  position: relative;
+}
+
+.person-face,
+.person-hair,
+.person-nose,
+.person-ear,
+.person-neck,
+.person-body,
+.person-cape,
+.person-logo,
+.person-group,
+.person-fringe,
+.person-eye,
+.person-profile-card,
+.person-yes,
+.person-no,
+.person-info,
+.person-tongue,
+.person-profile-wrap,
+.person-name,
+.person-mouth {
+  position: absolute;
+}
+
+.person-container {
+  position: absolute;
+  margin: 0;
+  top: -30px;
+  bottom: 30px;
+  right: 0;
+  left: 0;
+  width: 200px;
+  height: 200px;
+}
+
+.person-group {
+  left: -4px;
+}
+
+.person-face {
+  @include border(100px);
+  z-index: 20;
+  top: 50px;
+  left: 70px;
+  width: 80px;
+  height: 100px;
+  background: #F0BEAF;
+}
+
+.person-hair {
+  z-index: 3;
+  top: 30px;
+  left: 58px;
+  width: 100px;
+  height: 100px;
+  @include border(100%);
+  background: $grey;
+}
+
+.person-ear {
+  z-index: 1;
+  top: 86px;
+  left: 58px;
+  width: 30px;
+  height: 30px;
+  @include border(100%);
+  background: $skin;
+  &:before {
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    content: '';
+    width: 20px;
+    height: 20px;
+    @include border(100%);
+    background: #ED8A80;
+  }
+}
+
+.person-ear.right {
+  left: 130px;
+}
+
+.person-fringe {
+  z-index: 99;
+  top: 40px;
+  left: 75px;
+  width: 80px;
+  height: 40px;
+  background: $grey;
+  border-radius: 100% 0 100% 100%;
+  &:before {
+    position: absolute;
+    content: '';
+    top: 10px;
+    left: -15px;
+    width: 20px;
+    height: 40px;
+    background: #424B54;
+    @include border(100%);
+    transform: rotate(10deg);
+  }
+}
+
+.person-eye {
+  z-index: 30;
+  top: 100px;
+  left: 80px;
+  width: 10px;
+  height: 10px;
+  background: $grey;
+  @include border(100%);
+  &:before {
+    position: absolute;
+    content: '';
+    left: 50px;
+    width: 10px;
+    height: 10px;
+    background: #424B54;
+    @include border(100%);
+  }
+}
+
+.person-nose {
+  z-index: 20;
+  top: 100px;
+  left: 107px;
+  width: 8px;
+  height: 14px;
+  background: #DB9B99;
+  @include border(100px);
+}
+
+.person-mouth {
+  z-index: 20;
+  top: 120px;
+  left: 97px;
+  width: 30px;
+  height: 15px;
+  border-radius: 0 0 100px 100px;
+  background: #424B54;
+  overflow: hidden;
+}
+
+.person-tongue {
+  top: 5px;
+  left: 8px;
+  width: 30px;
+  height: 20px;
+  background: $pink;
+  @include border(100%);
+}
+
+.person-neck {
+  z-index: 13;
+  width: 30px;
+  height: 30px;
+  background: $skin;
+  top: 130px;
+  left: 97px;
+  @include border(100%);
+}
+
+.person-cape {
+  z-index: 4;
+  top: 148px;
+  left: 43px;
+  width: 130px;
+  height: 50px;
+  background: #E15554;
+  border-radius: 60px 60px 0 0;
+}
+

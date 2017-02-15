@@ -1,2 +1,0 @@
-class DailyAchievementsController < ApplicationController
-end

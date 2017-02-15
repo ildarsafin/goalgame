@@ -24,6 +24,7 @@ gem "carrierwave"
 gem "mini_magick"
 gem "font-awesome-rails"
 gem "simple_form"
+gem "cocoon"
 
 gem "devise"
 gem "devise_invitable"

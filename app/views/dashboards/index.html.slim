@@ -1,0 +1,13 @@
+.main-container
+  section class="space--sm"
+    .container
+      .row.text-center
+        .col-md-6
+          h2 Последние Отчеты
+          .reports
+        .col-md-6
+          h2 Текущие цели
+          .goals
+      = link_to "новая цель", new_goal_url
+      br
+      = link_to "новый отчет", new_daily_report_url

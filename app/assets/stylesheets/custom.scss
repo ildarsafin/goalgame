@@ -1,0 +1,37 @@
+/*! Place your custom styles here */
+
+.login-image {
+  background-image: image-url("education-6.jpg");
+  background-size:100%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+
+.white-text {
+  color: #ffffff !important;
+}
+
+.user-personas {
+  min-height: 200px;
+  max-height: 250px;
+  width: 100%;
+}
+
+.footer-achievements {
+  p {
+    margin: 0;
+  }
+}
+
+.footer-achivement-item {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+}
+
+.medium-editable {
+  outline: none;
+  min-height: 200px !important;
+}

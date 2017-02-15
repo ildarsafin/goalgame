@@ -1,0 +1,79 @@
+<div class="bar bar--sm visible-xs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-3 col-sm-2">
+                <a href="index.html">
+                  <%= image_tag "goalgame_logo.svg", class: "logo" %>
+                </a>
+            </div>
+            <div class="col-xs-9 col-sm-10 text-right">
+                <a href="#" class="hamburger-toggle" data-toggle-class="#menu2;hidden-xs hidden-sm">
+                    <i class="icon icon--sm stack-interface stack-menu"></i>
+                </a>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</div>
+<nav id="menu2" class="bar bar-2 hidden-xs ">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2 text-center text-left-sm hidden-xs col-md-push-5">
+                <div class="bar__module">
+                    <a href="index.html">
+                      <%= image_tag "goalgame_logo.svg", class: "logo" %>
+                    </a>
+                </div>
+                <!--end module-->
+            </div>
+            <div class="col-md-5 col-md-pull-2">
+                <div class="bar__module">
+                    <ul class="menu-horizontal text-left">
+                        <li>
+                          <%= link_to "Главная", dashboards_url %>
+                        </li>
+                        <li>
+                          <%= link_to "Цели", goals_url %>
+                        </li>
+                        <li>
+                          <%= link_to "Отчеты", daily_reports_url %>
+                        </li>
+                        <li>
+                            <span class="dropdown__trigger">Статистика</span>
+                            <!--end dropdown container-->
+                        </li>
+                    </ul>
+                </div>
+                <!--end module-->
+            </div>
+            <div class="col-md-5 text-right text-left-xs">
+                <div class="bar__module">
+                    <ul class="menu-horizontal">
+                        <li class="dropdown">
+                            <span class="dropdown__trigger">
+                                <%= image_tag "avatar-large-2.png", class: "avatar image--xxs" %>
+
+                                <%= current_user.profile.full_name %>
+                            </span>
+                        </li>
+                        <li class="dropdown">
+                            <span class="dropdown__trigger">
+                                <i class="stack-interface stack-bell"></i> Уведомления
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bar__module">
+                    <a class="btn btn--primary btn--sm type--uppercase" href="#">
+                        <span class="btn__text">
+                            Премиум
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--end of row-->
+    </div>
+    <!--end of container-->
+</nav>
