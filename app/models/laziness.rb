@@ -1,0 +1,2 @@
+class Laziness < ApplicationRecord
+end
