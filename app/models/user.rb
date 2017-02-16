@@ -7,10 +7,18 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_one :account, dependent: :destroy
 
+  has_many :user_personas, dependent: :destroy
+  has_many :personas, through: :user_personas
+
+  has_one :laziness, dependent: :destroy
+
   has_many :goals, dependent: :destroy
   has_many :daily_reports, dependent: :destroy
 
   after_create :with_account
+  after_create :with_laziness
+  after_create :with_persona
+
   after_initialize :set_profile
 
   accepts_nested_attributes_for :profile
@@ -18,6 +26,14 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :goals
 
   private
+  def with_laziness
+    self.create_laziness!(points: 0)
+  end
+
+  def with_persona
+    persona = Persona.first
+    self.user_personas.create!(persona: persona, )
+  end
 
   def with_account
     self.create_account!(coins: 0)

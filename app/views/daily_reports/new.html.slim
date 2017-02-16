@@ -3,15 +3,4 @@
     .container.pos-vertical-center
       .row
         .col-md-8
-          h2 Добавить отчет
-          p class="lead"
-            | Нужно писать отчет каждый день.&nbsp;
-
-          = simple_form_for(@daily_report, url: daily_reports_url, method: :post) do |f|
-            .input-group
-              .col-md-12
-                = f.input :content, label: false, required: true, placeholder: 'Отчет', input_html: { class: "medium-editable" }
-            br
-            .input-group
-              .col-md-12
-                = f.button :submit, "Добавить" , class: "btn btn--primary"
+          = render "create_daily_report_form", daily_report: @daily_report

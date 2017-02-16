@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214215231) do
+ActiveRecord::Schema.define(version: 20170216105105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "coins"
-    t.integer "user_id", null: false
+    t.integer "coins",   default: 0
+    t.integer "user_id",             null: false
     t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
 
   create_table "achievements", force: :cascade do |t|
-    t.string "title", null: false
-    t.string "badge", null: false
+    t.string "title",       null: false
+    t.string "badge",       null: false
+    t.text   "description"
   end
 
   create_table "achievings", force: :cascade do |t|
@@ -57,22 +58,32 @@ ActiveRecord::Schema.define(version: 20170214215231) do
   end
 
   create_table "lazinesses", force: :cascade do |t|
-    t.integer "points"
-    t.integer "profile_id", null: false
-    t.index ["profile_id"], name: "index_lazinesses_on_profile_id", using: :btree
+    t.integer "points",  default: 0
+    t.integer "user_id",             null: false
+    t.index ["user_id"], name: "index_lazinesses_on_user_id", using: :btree
   end
 
   create_table "personas", force: :cascade do |t|
-    t.integer "points"
-    t.integer "profile_id", null: false
-    t.index ["profile_id"], name: "index_personas_on_profile_id", using: :btree
+    t.integer "cost",        null: false
+    t.string  "name",        null: false
+    t.text    "description"
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string  "full_name", null: false
+    t.string  "full_name",                   null: false
     t.string  "avatar"
-    t.integer "user_id",   null: false
+    t.integer "activity_points", default: 0
+    t.integer "user_id",                     null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "user_personas", force: :cascade do |t|
+    t.integer  "user_id",    null: false
+    t.integer  "persona_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["persona_id"], name: "index_user_personas_on_persona_id", using: :btree
+    t.index ["user_id"], name: "index_user_personas_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,7 +108,8 @@ ActiveRecord::Schema.define(version: 20170214215231) do
   add_foreign_key "achievings", "users"
   add_foreign_key "daily_reports", "users"
   add_foreign_key "goals", "users"
-  add_foreign_key "lazinesses", "profiles"
-  add_foreign_key "personas", "profiles"
+  add_foreign_key "lazinesses", "users"
   add_foreign_key "profiles", "users"
+  add_foreign_key "user_personas", "personas"
+  add_foreign_key "user_personas", "users"
 end

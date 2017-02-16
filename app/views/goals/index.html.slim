@@ -1,0 +1,24 @@
+.main-container
+  section class="text-center"
+    .modal-instance
+      a class="btn modal-trigger" href="#"
+        span class="btn__text" Поставить новую цель
+      .modal-container
+        .modal-content
+          .boxed.boxed--lg
+            = render "create_goal_form", goal: Goal.new
+  section class="text-center space--sm"
+    .container
+      .row
+        .col-sm-10.col-md-8.col-md-offset-2
+          .row
+            - @goals.each_with_index do |goal, index|
+              .col-sm-6
+                .feature.feature-3.boxed.boxed--lg.boxed--border
+                  span class="h1 h1--large"
+                    = index + 1
+                    | .
+                  h4
+                    = goal.planned_end_at
+                  p
+                    = goal.description

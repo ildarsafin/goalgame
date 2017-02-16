@@ -12,7 +12,12 @@ class GoalsController < ApplicationController
     @goal.status = 0
     @goal.start_at = DateTime.now
     @goal.save
-    redirect_to new_goal_url
+    flash[:success] = "Вы успешно создали цель!"
+
+    current_user.account.points +=10
+    current_user.account.points +=10
+
+    redirect_to goals_url
   end
 
   private

@@ -12,9 +12,12 @@ html
 
   body
     - flash.each do |key, value|
-      / .alert
-      /   div class="#{notification_type(key)}"
-      /     = value
+      .notification.pos-right.pos-top.col-sm-4.col-md-3.notification--reveal data-animation="from-top" data-autoshow="200"
+        .boxed.boxed--border.border--round.box-shadow
+          .text-block
+              h5 Нотификация
+              p
+                = value
 
     main
       = render "header"

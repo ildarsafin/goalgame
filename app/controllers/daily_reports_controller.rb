@@ -8,8 +8,14 @@ class DailyReportsController < ApplicationController
   end
 
   def create
-    @daily_report = current_user.daily_reports.create(daily_report_params)
-    redirect_to new_daily_report_url
+    if current_user.daily_reports.today_reports.empty?
+      current_user.daily_reports.create(daily_report_params)
+      flash[:success] = "Вы успешно создали отчет!"
+    else
+      flash[:error] = "Вы уже писали отчет за сегодня"
+    end
+
+    redirect_to daily_reports_url
   end
 
   private

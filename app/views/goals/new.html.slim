@@ -3,19 +3,4 @@
     .container.pos-vertical-center
       .row
         .col-sm-8
-          h2 Добавить цель
-          p class="lead"
-            | Нужно добавить цель по методике&nbsp;
-
-            a href="#" SMART
-
-          = simple_form_for(@goal, url: goals_url, method: :post) do |f|
-            .row
-              .col-sm-12
-                = f.input :description, label: false, required: true, placeholder: 'Описание цели'
-              .col-sm-4
-                = f.input :planned_end_at, as: :string, label: false, required: true, input_html: { id: "datetimepicker", placeholder: "14 окт 14:00" }
-              .col-sm-4
-                = f.input :activity_area, :as => :select, collection: Goal.activity_areas.keys, include_blank: false, label: false, placeholder: 'Область цели'
-              .col-sm-4
-                = f.button :submit, "Добавить" , class: "btn btn--primary"
+          = render "create_goal_form", goal: @goal
