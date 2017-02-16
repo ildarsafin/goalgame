@@ -10,6 +10,7 @@
   section class="text-center space--sm"
     .container
       .row
+        h2 Текущие цели
         .col-sm-10.col-md-8.col-md-offset-2
           .row
             - @goals.each_with_index do |goal, index|
@@ -19,6 +20,12 @@
                     = index + 1
                     | .
                   h4
-                    = goal.planned_end_at
+                    | Дедлайн:&nbsp;
+                    =l goal.planned_end_at, format: :event_day
                   p
                     = goal.description
+                  .row
+                    .col-md-6
+                      = link_to "достиг!", goal_done_url(goal), method: :post
+                    .col-md-6
+                      = link_to "провалил", goal_cancel_url(goal), method: :post

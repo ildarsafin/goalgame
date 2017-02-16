@@ -5,9 +5,16 @@
         .col-md-6
           h2 Последние Отчеты
           .reports
+            - @daily_reports.each do |daily_report|
+              p
+                | Отчет за&nbsp;
+                =l daily_report.created_at, format: :event_day
         .col-md-6
           h2 Текущие цели
           .goals
+            - @goals.each do |goal|
+              p
+                = goal.description
       = link_to "новая цель", new_goal_url
       br
       = link_to "новый отчет", new_daily_report_url

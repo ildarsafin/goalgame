@@ -39,15 +39,18 @@
                         <li>
                           <%= link_to "Отчеты", daily_reports_url %>
                         </li>
-                        <li>
-                            <span class="dropdown__trigger">Статистика</span>
-                            <!--end dropdown container-->
-                        </li>
                     </ul>
                 </div>
                 <!--end module-->
             </div>
             <div class="col-md-5 text-right text-left-xs">
+                <div class="bar__module">
+                    <a class="btn btn--default btn--sm type--uppercase" href="#">
+                        <span class="btn__text">
+                            Купить Премиум
+                        </span>
+                    </a>
+                </div>
                 <div class="bar__module">
                     <ul class="menu-horizontal">
                         <li class="dropdown">
@@ -57,19 +60,7 @@
                                 <%= current_user.profile.full_name %>
                             </span>
                         </li>
-                        <li class="dropdown">
-                            <span class="dropdown__trigger">
-                                <i class="stack-interface stack-bell"></i> Уведомления
-                            </span>
-                        </li>
                     </ul>
-                </div>
-                <div class="bar__module">
-                    <a class="btn btn--primary btn--sm type--uppercase" href="#">
-                        <span class="btn__text">
-                            Премиум
-                        </span>
-                    </a>
                 </div>
             </div>
         </div>

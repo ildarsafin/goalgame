@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
   }
 
-  resources :goals
+  resources :goals do
+    post :done, action: :done
+    post :cancel, action: :cancel
+  end
+
   resources :daily_reports
 
   resources :dashboards, path: :dashboard, only: [:index]

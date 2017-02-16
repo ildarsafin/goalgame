@@ -11,7 +11,9 @@
               p
                 | Персонаж:&nbsp;
                 = current_user.profile.full_name
-              p Уровень: новичок
+              p
+                | Уровень:&nbsp;
+                = current_user.profile.level
               .footer-achievements
                 p Ваши последние награды:
                 .footer-achivement-item
@@ -36,7 +38,8 @@
                   | Ваш противник: Лень
                 p Уровень: Лень обыкновенная
                 p
-                  | 100&nbsp;очков
+                  = current_user.laziness.points
+                  | &nbsp;очков
             .col-md-6
               .monster-wrapper
                 = render "shared/monster"

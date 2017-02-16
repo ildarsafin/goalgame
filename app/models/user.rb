@@ -10,10 +10,12 @@ class User < ApplicationRecord
   has_many :user_personas, dependent: :destroy
   has_many :personas, through: :user_personas
 
+  scope :current_persona, -> { p = user_personas.active.first; p.persona }
+
   has_one :laziness, dependent: :destroy
 
-  has_many :goals, dependent: :destroy
-  has_many :daily_reports, dependent: :destroy
+  has_many :goals, -> { order(created_at: :desc) }, dependent: :destroy
+  has_many :daily_reports, -> { order(created_at: :desc) }, dependent: :destroy
 
   after_create :with_account
   after_create :with_laziness
@@ -21,18 +23,20 @@ class User < ApplicationRecord
 
   after_initialize :set_profile
 
+  accepts_nested_attributes_for :account
   accepts_nested_attributes_for :profile
 
   accepts_nested_attributes_for :goals
 
   private
+
   def with_laziness
     self.create_laziness!(points: 0)
   end
 
   def with_persona
     persona = Persona.first
-    self.user_personas.create!(persona: persona, )
+    self.user_personas.create!(persona: persona, active: true)
   end
 
   def with_account

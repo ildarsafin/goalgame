@@ -78,10 +78,11 @@ ActiveRecord::Schema.define(version: 20170216105105) do
   end
 
   create_table "user_personas", force: :cascade do |t|
-    t.integer  "user_id",    null: false
-    t.integer  "persona_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",                    null: false
+    t.integer  "persona_id",                 null: false
+    t.boolean  "active",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.index ["persona_id"], name: "index_user_personas_on_persona_id", using: :btree
     t.index ["user_id"], name: "index_user_personas_on_user_id", using: :btree
   end
