@@ -10,14 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170216105105) do
+ActiveRecord::Schema.define(version: 20170217194402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "coins",   default: 0
-    t.integer "user_id",             null: false
+    t.integer "coins",             default: 0
+    t.integer "user_id",                       null: false
+    t.string  "tinkoff_rebill_id"
+    t.index ["tinkoff_rebill_id"], name: "index_accounts_on_tinkoff_rebill_id", using: :btree
     t.index ["user_id"], name: "index_accounts_on_user_id", using: :btree
   end
 
@@ -61,6 +63,15 @@ ActiveRecord::Schema.define(version: 20170216105105) do
     t.integer "points",  default: 0
     t.integer "user_id",             null: false
     t.index ["user_id"], name: "index_lazinesses_on_user_id", using: :btree
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "amount_in_kopecks", default: 0
+    t.integer  "status",            default: 0
+    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.index ["user_id"], name: "index_orders_on_user_id", using: :btree
   end
 
   create_table "personas", force: :cascade do |t|
@@ -110,6 +121,7 @@ ActiveRecord::Schema.define(version: 20170216105105) do
   add_foreign_key "daily_reports", "users"
   add_foreign_key "goals", "users"
   add_foreign_key "lazinesses", "users"
+  add_foreign_key "orders", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "user_personas", "personas"
   add_foreign_key "user_personas", "users"

@@ -10,6 +10,8 @@ class User < ApplicationRecord
   has_many :user_personas, dependent: :destroy
   has_many :personas, through: :user_personas
 
+  has_many :orders, dependent: :destroy
+
   scope :current_persona, -> { p = user_personas.active.first; p.persona }
 
   has_one :laziness, dependent: :destroy

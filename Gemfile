@@ -16,6 +16,7 @@ gem "puma", "~> 3.0"
 # Use SCSS for stylesheets
 gem "sass-rails"
 gem "coffee-rails"
+gem "tinkoff"
 
 gem "active_link_to"
 gem "therubyracer", platforms: :ruby

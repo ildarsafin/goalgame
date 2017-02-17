@@ -45,11 +45,7 @@
             </div>
             <div class="col-md-5 text-right text-left-xs">
                 <div class="bar__module">
-                    <a class="btn btn--default btn--sm type--uppercase" href="#">
-                        <span class="btn__text">
-                            Купить Премиум
-                        </span>
-                    </a>
+                    <%= link_to "Купить Премиум", payments_url, method: :post, class: "btn btn--default btn--sm type--uppercase" %>
                 </div>
                 <div class="bar__module">
                     <ul class="menu-horizontal">
