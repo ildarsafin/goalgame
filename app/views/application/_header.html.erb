@@ -47,7 +47,7 @@
                 <div class="bar__module">
                     <% if current_user.paid? %>
                         <p>
-                            Подписка закончится через <%= current_user.subscription_end_at_days %> дней
+                            Подписка закончится через <%= current_user.premium_end_at_days %> дней
                         </p>
 
                     <% else %>
