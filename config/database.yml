@@ -14,3 +14,7 @@ development:
 test:
   <<: *default
   database: goalgame_test
+
+production:
+  <<: *default
+  database: goalgame_production
