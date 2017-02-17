@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Persona.create(cost: 0, name: "boy", description: "Молодой, но амбициозный человек")
+Persona.find_or_create_by(cost: 0, name: "boy", description: "Молодой, но амбициозный человек")
