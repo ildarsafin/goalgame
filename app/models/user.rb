@@ -30,6 +30,15 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :goals
 
+  def paid?
+    orders.paid.present? && orders.paid.last.created_at < Time.zone.now + 30.days
+  end
+
+  def subscription_end_at_days
+    return 0 unless paid?
+    (orders.paid.last.created_at.to_i - Time.zone.now.to_i).days
+  end
+
   private
 
   def with_laziness

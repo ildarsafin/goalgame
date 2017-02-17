@@ -45,7 +45,14 @@
             </div>
             <div class="col-md-5 text-right text-left-xs">
                 <div class="bar__module">
-                    <%= link_to "Купить Премиум", payments_url, method: :post, class: "btn btn--default btn--sm type--uppercase" %>
+                    <% if current_user.paid? %>
+                        <p>
+                            Подписка закончится через <%= current_user.subscription_end_at_days %> дней
+                        </p>
+
+                    <% else %>
+                        <%= link_to "Купить Премиум", payments_url, method: :post, class: "btn btn--default btn--sm type--uppercase" %>
+                    <% end %>
                 </div>
                 <div class="bar__module">
                     <ul class="menu-horizontal">
