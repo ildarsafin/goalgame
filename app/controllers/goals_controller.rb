@@ -16,15 +16,19 @@ class GoalsController < ApplicationController
   def create
     @goal = current_user.goals.build(goal_params)
     @goal.start_at = DateTime.now
-    @goal.save
-    flash[:success] = "Вы успешно создали цель!"
 
-    current_user.account.coins += 10
-    current_user.profile.activity_points += 10
+    if @goal.save
+      flash[:success] = "Вы успешно создали цель!"
 
-    current_user.save
+      current_user.account.coins += 10
+      current_user.profile.activity_points += 10
 
-    redirect_to dashboards_url
+      current_user.save
+
+      redirect_to dashboards_url
+    else
+      render :new
+    end
   end
 
   def done
