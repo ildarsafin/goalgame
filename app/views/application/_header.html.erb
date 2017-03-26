@@ -36,9 +36,6 @@
                         <li>
                           <%= link_to "Цели", goals_url %>
                         </li>
-                        <li>
-                          <%= link_to "Отчеты", daily_reports_url %>
-                        </li>
                     </ul>
                 </div>
                 <!--end module-->
@@ -62,6 +59,15 @@
 
                                 <%= current_user.profile.full_name %>
                             </span>
+                            <div class="dropdown__container">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="dropdown__content col-md-2 col-sm-4">
+                                            <%= link_to "Выйти", destroy_user_session_url %>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </li>
                     </ul>
                 </div>

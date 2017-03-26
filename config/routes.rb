@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   resources :goals do
     post :done, action: :done
     post :cancel, action: :cancel
+
+    resources :daily_reports, only: :create
   end
 
   resources :payments, only: [:create] do
     post :notification, action: :notification, on: :collection
   end
-
-  resources :daily_reports
 
   resources :dashboards, path: :dashboard, only: [:index]
 

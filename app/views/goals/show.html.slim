@@ -1,0 +1,52 @@
+.main-container
+  section class="space--sm"
+    .container
+      .row
+        .col-md-12
+          - if @goal.daily_reports.today_reports.empty?
+            h2 Добавить отчет
+            p class="lead"
+              | Нужно писать отчет каждый день.&nbsp;
+
+            = simple_form_for(DailyReport.new, url: goal_daily_reports_url(@goal), method: :post) do |f|
+              .input-group
+                .col-md-12
+                  = f.input :content, label: false, required: true, placeholder: 'Отчет', input_html: { class: "medium-editable" }
+              br
+              .input-group
+                .col-md-12
+                  = f.button :submit, "Добавить" , class: "btn btn--primary"
+
+      br
+      .row
+        .col-md-6.text-center
+          = image_tag @goal.picture_url, class: "border--round box-shadow-wide", width: 555, height: 369
+
+          | Цель:&nbsp;
+          span
+            = @goal.description
+          .col-md-12
+              = link_to "достиг!", goal_done_url(@goal), method: :post
+          .col-md-12
+              = link_to "провалил", goal_cancel_url(@goal), method: :post
+
+          - @goal.goal_steps.each_with_index do |step, index|
+            p
+              | Шаг&nbsp;
+              = index +1
+              | .&nbsp;
+              = step.description
+
+        .col-md-6
+          ol class="process-3"
+            - @goal.daily_reports.each do |daily_report|
+              li class="process__item"
+                .process__number
+                  span
+                    = daily_report.position
+                .process__body
+                  h4
+                    | Отчет за &nbsp;
+                    =l daily_report.created_at, format: :event_day
+                  p
+                    = daily_report.content.html_safe

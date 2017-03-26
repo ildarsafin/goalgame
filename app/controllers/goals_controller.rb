@@ -1,15 +1,20 @@
 class GoalsController < ApplicationController
   def index
     @goals = current_user.goals.active
+    @achieved_goals = current_user.goals.achieved
+    @cancelled_goals = current_user.goals.cancelled
   end
 
   def new
     @goal = Goal.new
   end
 
+  def show
+    @goal = Goal.find(params[:id])
+  end
+
   def create
     @goal = current_user.goals.build(goal_params)
-    @goal.status = 0
     @goal.start_at = DateTime.now
     @goal.save
     flash[:success] = "Вы успешно создали цель!"
@@ -19,29 +24,28 @@ class GoalsController < ApplicationController
 
     current_user.save
 
-    redirect_to goals_url
+    redirect_to dashboards_url
   end
 
   def done
     @goal = Goal.find(params[:goal_id])
     @goal.update_attributes(
-      status: Goal.statuses[:achieved],
-      actually_end_at: DateTime.now
+      actually_achieved_at: DateTime.now
     )
 
-    redirect_to goals_url
+    redirect_to dashboards_url
   end
 
   def cancel
     @goal = Goal.find(params[:goal_id])
-    @goal.update_attributes(status: Goal.statuses[:cancelled])
+    @goal.update_attributes(cancelled_at: DateTime.now)
 
-    redirect_to goals_url
+    redirect_to dashboards_url
   end
 
   private
 
   def goal_params
-    params.require(:goal).permit(:id, :description, :planned_end_at, :activity_area)
+    params.require(:goal).permit(:id, :description, :planned_achieve_at, :picture, goal_steps_attributes: [:id, :description, :_destroy])
   end
 end

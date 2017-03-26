@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
+  mount_uploader :avatar, AvatarUploader
+
   def level
     return "novice" if activity_points <= 100
     return "fan" if activity_points < 200

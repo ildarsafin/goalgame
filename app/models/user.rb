@@ -14,13 +14,10 @@ class User < ApplicationRecord
 
   scope :current_persona, -> { p = user_personas.active.first; p.persona }
 
-  has_one :laziness, dependent: :destroy
-
   has_many :goals, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :daily_reports, -> { order(created_at: :desc) }, dependent: :destroy
 
   after_create :with_account
-  after_create :with_laziness
   after_create :with_persona
 
   after_initialize :set_profile
@@ -44,10 +41,6 @@ class User < ApplicationRecord
   end
 
   private
-
-  def with_laziness
-    self.create_laziness!(points: 0)
-  end
 
   def with_persona
     persona = Persona.first

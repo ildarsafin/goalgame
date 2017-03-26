@@ -8,9 +8,16 @@ p class="lead"
   .row
     .col-sm-12
       = f.input :description, label: false, required: true, placeholder: 'Описание цели'
-    .col-sm-4
-      = f.input :planned_end_at, as: :string, label: false, required: true, input_html: { id: "datetimepicker", placeholder: "14 окт 14:00" }
-    .col-sm-4
-      = f.input :activity_area, :as => :select, collection: Goal.activity_areas.keys, include_blank: false, label: false, placeholder: 'Область цели'
-    .col-sm-4
+    .col-sm-12
+      = f.input :planned_achieve_at, as: :string, label: false, required: true, input_html: { id: "datetimepicker", placeholder: "14 окт 14:00" }
+    .col-sm-12
+      = f.input :picture, label: false, required: true
+    .col-sm-12
+      .field_block_holder
+        = f.simple_fields_for :goal_steps, allow_destroy: true do |goal_step|
+          = render 'goal_step_fields', f: goal_step
+        .new-goal-step-block
+        = link_to_add_association f, :goal_steps, "data-association-insertion-node" => ".new-goal-step-block", class: "link" do
+          span + Добавить шаг к цели
+    .col-sm-12
       = f.button :submit, "Добавить" , class: "btn btn--primary"

@@ -1,12 +1,4 @@
 .main-container
-  section class="text-center"
-    .modal-instance
-      a class="btn modal-trigger" href="#"
-        span class="btn__text" Поставить новую цель
-      .modal-container
-        .modal-content
-          .boxed.boxed--lg
-            = render "create_goal_form", goal: Goal.new
   section class="text-center space--sm"
     .container
       .row
@@ -21,9 +13,52 @@
                     | .
                   h4
                     | Дедлайн:&nbsp;
-                    =l goal.planned_end_at, format: :event_day
+                    =l goal.planned_achieve_at, format: :event_day
                   p
-                    = goal.description
+                    = link_to goal.description, goal_url(goal)
+                  .row
+                    .col-md-6
+                      = link_to "достиг!", goal_done_url(goal), method: :post
+                    .col-md-6
+                      = link_to "провалил", goal_cancel_url(goal), method: :post
+
+      .row
+        h2 Достигнутые цели
+        .col-sm-10.col-md-8.col-md-offset-2
+          .row
+            - @achieved_goals.each_with_index do |goal, index|
+              .col-sm-6
+                .feature.feature-3.boxed.boxed--lg.boxed--border
+                  span class="h1 h1--large"
+                    = index + 1
+                    | .
+                  h4
+                    | Дедлайн:&nbsp;
+                    =l goal.planned_achieve_at, format: :event_day
+                  p
+                    = link_to goal.description, goal_url(goal)
+                  .row
+                    .col-md-6
+                      = link_to "достиг!", goal_done_url(goal), method: :post
+                    .col-md-6
+                      = link_to "провалил", goal_cancel_url(goal), method: :post
+
+
+      .row
+        h2 Отмененные цели
+        .col-sm-10.col-md-8.col-md-offset-2
+          .row
+            - @cancelled_goals.each_with_index do |goal, index|
+              .col-sm-6
+                .feature.feature-3.boxed.boxed--lg.boxed--border
+                  span class="h1 h1--large"
+                    = index + 1
+                    | .
+                  h4
+                    | Дедлайн:&nbsp;
+                    =l goal.planned_achieve_at, format: :event_day
+                  p
+                    = link_to goal.description, goal_url(goal)
                   .row
                     .col-md-6
                       = link_to "достиг!", goal_done_url(goal), method: :post
