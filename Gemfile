@@ -38,6 +38,7 @@ gem "httparty"
 
 gem "acts_as_list"
 gem "acts-as-taggable-on"
+gem "fog"
 
 group :staging, :production do
   gem "rails_12factor"
