@@ -10,9 +10,14 @@ class PaymentsController < ApplicationController
   end
 
   def notification
-    notification = Tinkoff::Notification.new(params)
-    order = Order.find(notification.order_id)
-    order.user.account.update_attribute(:tinkoff_rebill_id, notification.rebill_id)
-    order.update_attribute(:status, Order.statuses[:paid])
+    notification_obj = Tinkoff::Notification.new(params)
+
+    if notification_obj.success?
+      order = Order.find(notification_obj.order_id)
+      order.user.account.update_attribute(:tinkoff_rebill_id, notification_obj.rebill_id)
+      order.update_attribute(:status, Order.statuses[:paid])
+    end
+
+    render status: 200, json: {}
   end
 end

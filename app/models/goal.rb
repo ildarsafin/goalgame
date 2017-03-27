@@ -1,4 +1,7 @@
 class Goal < ApplicationRecord
+  validates :description, presence: true, allow_blank: false
+  validates :picture, presence: true
+
   scope :active, -> { where(cancelled_at: nil, actually_achieved_at: nil) }
   scope :achieved, -> { where.not(actually_achieved_at: nil) }
   scope :cancelled, -> { where.not(cancelled_at: nil) }
