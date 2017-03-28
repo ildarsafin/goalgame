@@ -5,8 +5,10 @@
         .col-md-6
           h2 Текущие цели
           .goals
+            ul
             - @goals.each do |goal|
-              = link_to goal.description, goal_url(goal)
+              li
+                = link_to goal.description, goal_url(goal)
           = link_to "новая цель", new_goal_url
         .col-md-6
           h2 Статистика
