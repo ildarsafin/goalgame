@@ -1,5 +1,5 @@
 class DashboardsController < ApplicationController
   def index
-    @goals = current_user.goals.active.last(5)
+    @goals = current_user.goals.active
   end
 end
