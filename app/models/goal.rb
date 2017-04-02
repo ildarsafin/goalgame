@@ -7,8 +7,8 @@ class Goal < ApplicationRecord
   scope :cancelled, -> { where.not(cancelled_at: nil) }
 
   belongs_to :user
-  has_many :daily_reports
-  has_many :goal_steps
+  has_many :daily_reports, -> { order(created_at: :desc) }
+  has_many :goal_steps, -> { order(position: :asc) }
 
   mount_uploader :picture, PictureUploader
 
