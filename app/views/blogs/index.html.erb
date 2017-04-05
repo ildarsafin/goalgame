@@ -1,0 +1,26 @@
+<div class="main-container">
+  <section class="space--sm">
+    <div class="container">
+      <div class="row">
+        <%- if current_user.administrator? %>
+          <%= link_to "Новый блог пост", new_blog_url %>
+        <%- end %>
+        <div class="col-sm-12">
+          <div class="masonry-blog-magazine">
+            <div class="row">
+                <div class="masonry__container">
+                  <%- @blog_posts.each_with_index do |post, index| %>
+                    <%- if index == 0 || index % 5 == 0 %>
+                      <%= render "blog_post_two_col", post: post %>
+                    <%- else %>
+                      <%= render "blog_post_one_col", post: post %>
+                     <%- end %>
+                  <%- end %>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
