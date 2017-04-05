@@ -1,0 +1,13 @@
+.masonry__item.col-sm-6.col-xs-12.h
+  = link_to blog_url(post), class: "block" do
+    article class="imagebg border--round" data-scrim-bottom="8"
+      - if post.new_post?
+        span class="label" Новая статья
+      .background-image-holder
+        = image_tag post.picture.url
+      .article__title
+        span
+          =l post.created_at, format: :event_day
+        h4
+          = post.title
+

@@ -1,0 +1,27 @@
+.main-container
+  section class="height-80 text-center"
+    .container.pos-vertical-center
+      .row
+        .col-md-8
+          h2 Добавить отчет
+          p class="lead"
+            | Нужно писать отчет каждый день.&nbsp;
+
+          = simple_form_for(@blog_post, url: blogs_url, method: :post) do |f|
+            .input-group
+              .col-md-12
+                = f.input :title, label: false, required: true, placeholder: 'Добавить заголовок'
+
+            .input-group
+              .col-md-12
+                = f.input :picture, label: false, required: true
+
+            .input-group
+              .col-md-12
+                = f.input :content, label: false, required: true, placeholder: 'Отчет', input_html: { class: "medium-editable" }
+
+
+            br
+            .input-group
+              .col-md-12
+                = f.button :submit, "Добавить" , class: "btn btn--primary"

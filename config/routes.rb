@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
   }
 
+  resources :blogs, only: [:index, :new, :create, :show]
+
   resources :goals do
     post :done, action: :done
     post :cancel, action: :cancel
