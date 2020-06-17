@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user
 
-  mount_uploader :avatar, AvatarUploader
+  has_one_attached :avatar, dependent: :destroy
 
   def level
     return "novice" if activity_points <= 100

@@ -1,6 +1,5 @@
 class Goal < ApplicationRecord
   validates :description, presence: true, allow_blank: false
-  validates :picture, presence: true
 
   scope :active, -> { where(cancelled_at: nil, actually_achieved_at: nil) }
   scope :achieved, -> { where.not(actually_achieved_at: nil) }
@@ -10,7 +9,7 @@ class Goal < ApplicationRecord
   has_many :daily_reports, -> { order(created_at: :desc) }
   has_many :goal_steps, -> { order(position: :asc) }
 
-  mount_uploader :picture, PictureUploader
+  has_one_attached :picture, dependent: :destroy
 
   acts_as_list scope: :user
 

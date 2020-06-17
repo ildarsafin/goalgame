@@ -1,8 +1,8 @@
 source "https://rubygems.org"
 
-ruby "2.4.0"
+ruby "2.6.5"
 
-gem "rails", "~> 5.0.0"
+gem "rails", "6.0.1"
 gem "pg"
 
 # assets
@@ -11,24 +11,20 @@ gem "jquery-rails"
 gem "jquery-ui-rails"
 
 # Use Puma as the app server
-gem "puma", "~> 3.0"
+gem "puma"
+gem 'image_processing', '~> 1.2'
 
 # Use SCSS for stylesheets
 gem "sass-rails"
 gem "coffee-rails"
-gem "tinkoff"
 
 gem "active_link_to"
-gem "therubyracer", platforms: :ruby
 gem "uglifier"
-gem "carrierwave"
-gem "mini_magick"
 gem "font-awesome-rails"
 gem "simple_form"
 gem "cocoon"
 
 gem "devise"
-gem "devise_invitable"
 gem "kaminari"
 gem "responders"
 gem "seedbank"
@@ -52,11 +48,7 @@ end
 
 group :test do
   gem "simplecov", require: false
-  gem "capybara"
-  gem "capybara-webkit"
   gem "database_cleaner"
-  gem "email_spec"
-  gem "formulaic"
   gem "launchy"
   gem "shoulda-matchers", require: false
   gem "timecop"
@@ -69,7 +61,6 @@ group :development, :test do
   gem "brakeman", require: false
   gem "bundler-audit"
   gem "byebug"
-  gem "dotenv-rails"
   gem "factory_girl_rails"
   gem "fuubar"
   gem "jasmine"
@@ -82,7 +73,6 @@ group :development, :test do
 end
 
 group :development do
-  gem "bullet"
   gem "foreman"
   gem "letter_opener"
   gem "spring"
