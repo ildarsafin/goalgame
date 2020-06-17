@@ -15,7 +15,7 @@ gem "puma"
 gem 'image_processing', '~> 1.2'
 
 # Use SCSS for stylesheets
-gem "sass-rails"
+gem "sassc-rails"
 gem "coffee-rails"
 
 gem "active_link_to"
@@ -40,10 +40,6 @@ group :staging, :production do
   gem "rails_12factor"
 
   gem "redis"
-  gem "capistrano"
-  gem "capistrano-bundler"
-  gem "capistrano-rails"
-  gem "capistrano-rbenv", github: "capistrano/rbenv"
 end
 
 group :test do
