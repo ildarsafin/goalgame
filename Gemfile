@@ -15,7 +15,7 @@ gem "puma"
 gem 'image_processing', '~> 1.2'
 
 # Use SCSS for stylesheets
-gem "sassc-rails"
+gem "sass-rails"
 gem "coffee-rails"
 
 gem "active_link_to"
