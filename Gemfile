@@ -6,7 +6,6 @@ gem "rails", "6.0.1"
 gem "pg"
 
 # assets
-gem "autoprefixer-rails"
 gem "jquery-rails"
 gem "jquery-ui-rails"
 
@@ -15,9 +14,8 @@ gem "puma"
 gem 'image_processing', '~> 1.2'
 
 # Use SCSS for stylesheets
-gem "sass-rails"
+gem "sassc-rails"
 gem "coffee-rails"
-gem 'sqreen', '1.18.2'
 
 gem "active_link_to"
 gem "uglifier"
