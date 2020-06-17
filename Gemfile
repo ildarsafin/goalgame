@@ -17,6 +17,7 @@ gem 'image_processing', '~> 1.2'
 # Use SCSS for stylesheets
 gem "sass-rails"
 gem "coffee-rails"
+gem 'sqreen', '1.18.2'
 
 gem "active_link_to"
 gem "uglifier"

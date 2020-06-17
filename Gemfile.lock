@@ -151,6 +151,7 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
+    libsqreen (0.3.0.0.3)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -308,6 +309,10 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sq_mini_racer (0.2.5.0.1.beta3)
+    sqreen (1.18.2)
+      libsqreen (~> 0.3.0.0)
+      sq_mini_racer (~> 0.2.4.sqreen2)
     temple (0.7.7)
     thor (0.20.3)
     thread_safe (0.3.6)
@@ -379,6 +384,7 @@ DEPENDENCIES
   slim
   spring
   spring-commands-rspec
+  sqreen (= 1.18.2)
   timecop
   uglifier
   web-console
