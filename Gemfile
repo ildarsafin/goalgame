@@ -55,16 +55,10 @@ group :development, :test do
   gem "awesome_print"
   gem "brakeman", require: false
   gem "bundler-audit"
-  gem "byebug"
-  gem "factory_girl_rails"
-  gem "fuubar"
-  gem "jasmine"
-  gem "jasmine-jquery-rails"
-  gem "pry-rails"
-  gem "rails_best_practices"
+  gem "pry"
+  gem 'pry-rails'
   gem "rspec-rails"
   gem "rubocop"
-  gem "scss_lint", require: false
 end
 
 group :development do

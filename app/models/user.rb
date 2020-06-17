@@ -10,8 +10,6 @@ class User < ApplicationRecord
   has_many :user_personas, dependent: :destroy
   has_many :personas, through: :user_personas
 
-  has_many :orders, dependent: :destroy
-
   scope :current_persona, -> { p = user_personas.active.first; p.persona }
 
   has_many :goals, -> { order(created_at: :desc) }, dependent: :destroy
@@ -26,19 +24,6 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   accepts_nested_attributes_for :goals
-
-  def premium_period
-    30.days
-  end
-
-  def paid?
-    orders.paid.present? && orders.paid.last.created_at < Time.zone.now + premium_period
-  end
-
-  def premium_end_at_days
-    return 0 unless paid?
-    (orders.paid.last.created_at + premium_period - Time.zone.now).to_i / (60 * 60 * 24)
-  end
 
   private
 

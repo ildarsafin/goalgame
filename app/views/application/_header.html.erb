@@ -45,16 +45,6 @@
             </div>
             <div class="col-md-5 text-right text-left-xs">
                 <div class="bar__module">
-                    <% if current_user.paid? %>
-                        <p>
-                            Подписка закончится через <%= current_user.premium_end_at_days %> дней
-                        </p>
-
-                    <% else %>
-                        <%= link_to "Купить Премиум", payments_url, method: :post, class: "btn btn--default btn--sm type--uppercase" %>
-                    <% end %>
-                </div>
-                <div class="bar__module">
                     <ul class="menu-horizontal">
                         <li class="dropdown">
                             <span class="dropdown__trigger">
