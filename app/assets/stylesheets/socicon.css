@@ -1,12 +1,11 @@
 @charset "UTF-8";
 
-@font-face {
+/* @font-face {
   font-family: "socicon";
   src: font-url("socicon.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-
-}
+} */
 
 [data-icon]:before {
   font-family: "socicon" !important;
