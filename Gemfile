@@ -11,7 +11,7 @@ gem "jquery-ui-rails"
 
 # Use Puma as the app server
 gem "puma"
-gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.12'
 
 # Use SCSS for stylesheets
 gem "sassc-rails"
